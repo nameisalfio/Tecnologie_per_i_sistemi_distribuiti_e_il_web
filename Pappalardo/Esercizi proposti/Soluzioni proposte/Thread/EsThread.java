@@ -75,21 +75,14 @@ public class EsThread
         }
     });
 
-    public static void main(String[] args) 
+    public static void main(String[] args) throws Exception
     {
         //Start
         t1.start();
         t2.start();
 
-        // Join
-        try 
-        {
-            t1.join();
-            t2.join();  
-        } 
-        catch (InterruptedException e) 
-        {
-            e.printStackTrace();
-        }
+        //Join
+        t1.join();
+        t2.join();  
     }
 }

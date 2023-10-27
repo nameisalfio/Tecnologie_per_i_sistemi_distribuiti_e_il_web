@@ -14,7 +14,7 @@ public class Server {
 
         try {
             while(true) {
-                // bloccante finch� non avviene una connessione:
+                // bloccante finchè non avviene una connessione:
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Connection accepted: "+ clientSocket);
 

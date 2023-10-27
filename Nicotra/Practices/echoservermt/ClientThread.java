@@ -34,7 +34,7 @@ public class ClientThread extends Thread {
             start();
         } catch(IOException e1) {
             // in seguito ad ogni fallimento la socket deve essere chiusa, altrimenti
-            // verr� chiusa dal metodo run() del thread
+            // verrà chiusa dal metodo run() del thread
             try {
                 socket.close();
             } catch(IOException e2) {}

@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 
     memset(&server_addr, 0, len);
     server_addr.sin_family = AF_INET;
-    inet_pton(AF_INET, argv[1], &server_addr.sin_addr);
+    inet_pton(AF_INET, argv[1], &server_addr.sin_addr); //server_addr.sin_addr.s_addr=inet_addr(argv[1]);
     server_addr.sin_port = htons(atoi(argv[2]));
 
     if((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) handle_error("socket");
