@@ -23,14 +23,54 @@
     Tempo per la prova: 30 minuti 
 */
 
+
+
 import java.util.Random;
 
-
-public class Producer 
-{
+public class Producer {
     
-    public static void main(String[] args) throws Exception    
-    {
+    private static int m = new Random().nextInt(10) + 1; 
+
+    static Object lock = new Object();
+
+    static Thread p1 = new Thread(() -> {
+        while (true) {
+            synchronized (lock) {
+                try {
+                    if (m >= 1 && m <= 5) {
+                        m = new Random().nextInt(10) + 1;
+                        System.out.println("P1 generated and set M to: " + m);
+                        lock.notify(); // Sveglia P2
+                    } else {
+                        lock.wait(); // Mette P1 in attesa
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    });
+
+    static Thread p2 = new Thread(() -> {
+        while (true) {
+            synchronized (lock) {
+                try {
+                    if (m >= 6 && m <= 10) {
+                        m = new Random().nextInt(10) + 1;
+                        System.out.println("P2 generated and set M to: " + m);
+                        lock.notify(); // Sveglia P1
+                    } else {
+                        lock.wait(); // Mette P2 in attesa
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    });
+    
+    public static void main(String[] args) throws Exception{
+
         p1.start();
         p2.start();
 

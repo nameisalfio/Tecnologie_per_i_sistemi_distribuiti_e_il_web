@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
         if((n = recv(sockfd, buffer, BUFSIZ, 0)) < 0) handle_error("recv");
         buffer[n] = 0;
 
-        printf("Outcome: %s\n", buffer);
+        printf("Outcome: \n%s\n", buffer);
     }
     printf("\n[+]Connection closed..\n");
 
