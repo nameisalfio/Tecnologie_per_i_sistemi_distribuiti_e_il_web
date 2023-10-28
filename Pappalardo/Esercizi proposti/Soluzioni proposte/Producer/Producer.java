@@ -28,62 +28,7 @@ import java.util.Random;
 
 public class Producer 
 {
-    static volatile int m = new Random().nextInt(11);
-    static Object lock = new Object();
-
-    static Thread p1 = new Thread(() -> {
-        try 
-        {
-            while(true)
-            {
-                int M = m;
-                if (M >= 1 && M <= 5)
-                {
-                    synchronized (lock) {
-                        lock.notify();
-                        M = new Random().nextInt(11);
-                        System.out.println("[P1] M: " + M);
-                    }
-                } 
-                else if (M >= 6 && M <= 10)
-                {
-                    synchronized (lock) {
-                        lock.wait();
-                    }
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    });
-
-    static Thread p2 = new Thread(() -> {
-        try 
-        {
-            while(true)
-            {
-                int M = m;
-                if (M >= 6 && M <= 10)
-                {
-                    synchronized (lock) {
-                        lock.notify();
-                        M = new Random().nextInt(11);
-                        System.out.println("[P2] M: " + M);
-                    }
-                } 
-                else if (M >= 1 && M <= 5)
-                {
-                    synchronized (lock) {
-                        lock.wait();
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    });
-
+    
     public static void main(String[] args) throws Exception    
     {
         p1.start();
