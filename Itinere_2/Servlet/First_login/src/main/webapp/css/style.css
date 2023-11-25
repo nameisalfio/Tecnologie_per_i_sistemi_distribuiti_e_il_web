@@ -59,14 +59,6 @@ button {
     background-color: #45a049;
 }
 
-#delete {
-    background-color: #b00808;
-}
-
-#delete:hover {
-    background-color: #d01f0b;
-}
-
 #logout {
     background-color: #FFA500;
 }

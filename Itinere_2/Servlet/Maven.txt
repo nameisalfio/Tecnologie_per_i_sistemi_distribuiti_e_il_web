@@ -1,0 +1,67 @@
+1) Creare root Project
+
+    mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4
+
+    -> groupId : com.example
+    -> artefactId : app
+
+2) Pacchettizzare
+
+    mvn clean install
+
+
+3) Aggiungere il plugin nel pom.xml
+
+    <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <configuration>
+        <scan>10</scan>
+        </configuration>
+    </plugin>
+
+4) Runnare Jetty
+
+    mvn jetty:run
+
+5) Visualizza Web
+
+    Vai a localhost:8080/
+
+6) Aggiungi le dipendenze al pom.xml
+    
+    <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
+            <scope>provided</scope>
+    </dependency>
+
+7) Creare le directory nella cartella main
+
+    cd src/main
+    mkdir -p java/com/example
+
+8) Crea un file HelloWorld.java nella cartella example
+
+9) Modifica il file web.xml
+
+    <!DOCTYPE web-app PUBLIC
+     "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+     "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+    <web-app>
+      <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>com.example.HelloWorld</servlet-class>
+      </servlet>
+
+      <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/hello</url-pattern>
+      </servlet-mapping>
+    </web-app>
+
+10) Visualizza Web
+
+    Vai a localhost:8080/hello

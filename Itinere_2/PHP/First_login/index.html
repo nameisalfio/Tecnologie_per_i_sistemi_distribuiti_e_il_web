@@ -8,6 +8,22 @@
         <h1>Login</h1>
         <strong><p>Benvenuto al login</p></strong>
 
+        <form action="./php/register.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>            
+            <label for="age">Età:</label>
+            <input type="text" id="age" name="age" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit" id="login">Register me</button>
+        </form> 
+
         <form action="./php/login.php" method="post">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
@@ -15,7 +31,17 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <br>
-            <button type="submit">Login</button>
+            <button type="submit" id="login">Login</button>
+        </form> 
+
+        <form action="./php/delete.php" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit" id="delete">Delete me</button>
         </form> 
 
     </body>
