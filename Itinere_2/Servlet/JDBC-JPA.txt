@@ -1,0 +1,256 @@
+Creare una webapp con JDBC
+
+1) Creare root Project
+
+    mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4
+
+    -> groupId : com.example
+    -> artefactId : app
+
+2) Pacchettizzare
+
+    mvn clean install
+
+
+3) Aggiungere il plugin nel pom.xml
+
+    <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <configuration>
+        <scan>10</scan>
+        </configuration>
+    </plugin>
+
+4) Aggiungi le dipendenze al pom.xml
+    
+    <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>5.0.0</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>8.2.0</version>
+    </dependency>
+
+5) Creare le directory nella cartella main
+
+    cd src/main
+    mkdir -p java/com/example
+
+6) Crea un Servlet HelloWorld.java nella cartella example
+
+7) Modifica il file web.xml (opzionale se si usano le annotazioni 
+    
+    @WebServlet("/hello")
+
+    <!DOCTYPE web-app PUBLIC
+     "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+     "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+    <web-app>
+      <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>com.example.HelloWorld</servlet-class>
+      </servlet>
+
+      <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/hello</url-pattern>
+      </servlet-mapping>
+    </web-app>
+
+8) Runnare Jetty
+
+    mvn jetty:run
+
+9) Visualizza Web
+
+    Vai a localhost:8080
+____________________________________________________________________________________________________
+
+Creare una Webapp con JPA
+
+1) Seguire gli step 1. 2. e 3.
+
+2) Crea persistence.xml in src/main/resources/META-INF/persistence.xml
+
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+        <persistence-unit name="default">
+            <class>com.example</class>
+            <properties>
+                <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost/students"/>
+                <property name="jakarta.persistence.jdbc.user" value="root"/>
+                <property name="jakarta.persistence.jdbc.password" value="root"/>
+               <!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
+            </properties>
+        </persistence-unit>
+    </persistence>
+
+3 ) Aggiungere le dipendenze al file pom.xml 
+
+    <dependency>
+        <groupId>org.hibernate.orm</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>6.4.0.Final</version>
+    </dependency>
+    <dependency>
+        <groupId>jakarta.persistence</groupId>
+        <artifactId>jakarta.persistence-api</artifactId>
+        <version>3.1.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.mysql</groupId>
+        <artifactId>mysql-connector-j</artifactId>
+        <version>8.2.0</version>
+    </dependency>
+
+4) Creare una classe Student 
+
+    package com.example;
+
+    import jakarta.persistence.*;
+
+    @Entity
+    public class Student {
+        @Id
+        @GeneratedValue
+        private Long id;
+        private String name;
+        private Integer age;
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public void setAge(Integer age) {
+            this.age = age;
+        }
+
+        @Override
+        public String toString() {
+            return "Student{" +
+                    "name='" + name + '\'' +
+                    ", id='" + id + '\'' + 
+                    ", age='" + age + '\'' +
+                    '}';
+        }
+    }
+
+5) Crea un file student.jsp
+
+    <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>New student</title>
+    </head>
+    <body>
+    <form method="post" action="/servlet" autocomplete="off">
+        <label for="name">What's your name?</label><br>
+        <input type="text" id="name" name="name"><br>
+        <input type="submit" value="Submit">
+    </form>
+    </body>
+
+6) Crea il servlet
+
+    package com.example;
+
+    import java.io.*;
+    import java.sql.*;
+    import jakarta.servlet.http.*;
+    import jakarta.servlet.annotation.WebServlet;
+
+    @WebServlet("/hello")
+    public class HelloWorld extends HttpServlet {
+        Connection conn; 
+        final String connectionString = "jdbc:mysql://localhost:3306/students?user=root&password=root";
+
+        public void init() {
+            System.out.println("Servlet " + this.getServletName() + " has started");
+            try {
+                 conn = DriverManager.getConnection(connectionString);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            System.out.println("Connection Successfull");
+        }
+
+        public void doGet(HttpServletRequest request, HttpServletResponse response) {
+            try {
+                response.setContentType("text/html");
+                PrintWriter out = response.getWriter();
+
+                out.write("<html>");
+                out.write("<head><title></title></head>");
+                out.write("<body>");
+                out.write("<h1>Hello Servlet World</h1>");
+                out.write("</body></html>");
+
+                Statement stmt = conn.createStatement();
+                String query = "SELECT * from student";
+                ResultSet res = stmt.executeQuery(query);
+                while (res.next()) {
+                    out.write("<p>Name: " + res.getString("name") + ", Age: " + res.getString("age") + "</p>");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void doPost(HttpServletRequest request, HttpServletResponse response) {
+            try {
+                response.setContentType("text/html");
+                PrintWriter out = response.getWriter();
+
+                String name = request.getParameter("name");
+                Integer age = Integer.parseInt(request.getParameter("age"));
+
+                System.out.println(name + age);
+
+                String query = "INSERT INTO student (name, age) VALUES (?, ?)";
+                PreparedStatement stmt = conn.prepareStatement(query);
+                stmt.setString(1, name);
+                stmt.setInt(2, age);
+
+                stmt.executeUpdate();
+                out.println("Studente " + name + " inserito correttamente");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+7) Runnare Jetty
+
+    mvn jetty:run
+
+8) Visualizza Web
+
+    Vai a localhost:8080
