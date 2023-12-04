@@ -3,7 +3,7 @@ package com.example;
 import java.io.*;
 import java.sql.*;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.WebServlet;
 
 @WebServlet("/servlet")
 public class BookServlet extends HttpServlet {

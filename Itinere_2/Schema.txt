@@ -57,3 +57,12 @@ Query
   INSERT INTO books (titolo, autore, prezzo) VALUES (?, ?, ?)
   UPDATE books SET autore = ?, prezzo = ? WHERE titolo = ?
   DELETE FROM books WHERE titolo = ?
+
+Form
+
+	<form action="/servlet" method="post">
+        <label for="titolo">Titolo:</label>
+        <input type="text" id="titolo" name="titolo" required><br>
+        <!-- Altri campi -->
+        <input type="hidden" name="action" value="create"> 
+    </form>

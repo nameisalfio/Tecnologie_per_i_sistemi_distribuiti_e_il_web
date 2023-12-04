@@ -41,10 +41,12 @@ Sviluppare uno o più script PHP e pagine HTML che implementino le funzionalità
             <input type="text" id="autore" name="autore" required><br>
             
             <label for="prezzo">Prezzo:</label>
-            <input type="text" id="prezzo" name="prezzo" required><br>
-            <br>
+            <input type="text" id="prezzo" name="prezzo" required><br><br>
+
             <button type="submit">Registra</button>
-            <input type="hidden" name="action" value="create">
+
+            <!-- Specifica l'azione che deve compiere il server -->
+            <input type="hidden" name="action" value="create"> 
         </form>
 
     </body>

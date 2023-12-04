@@ -13,8 +13,8 @@
             <input type="text" id="autore" name="autore" required><br>
             
             <label for="prezzo">Prezzo:</label>
-            <input type="text" id="prezzo" name="prezzo" required><br>
-            <br>
+            <input type="text" id="prezzo" name="prezzo" required><br><br>
+
             <button type="submit">Modifica</button>
             <input type="hidden" name="action" value="update"><br>
             <input type="hidden" name="titolo" value="<%=titolo%>"><br>
@@ -31,6 +31,6 @@
 
         <br>
 
-        <a href="index.jsp"> <button>Torna alla home page</button></a>
+        <a href="index.jsp"><button>Torna alla home page</button></a>
     </body>
 </html>

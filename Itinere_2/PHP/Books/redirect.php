@@ -1,5 +1,5 @@
 <?php
-$titolo = htmlspecialchars($_GET['titolo']);
+  $titolo = $_GET['titolo'];
 ?>
 
 <html>
@@ -12,7 +12,7 @@ $titolo = htmlspecialchars($_GET['titolo']);
         <h1>Form di aggiornamento</h1>
         <br>
         
-        <strong><h3>Possibilit&agrave; di modificare autore e prezzo</h3></strong>
+        <strong><h3>Possibilit&agrave; di modificare autore e prezzo del libro <?php echo $titolo;?></h3></strong>
         <form action="script.php" method="post">
             <input type="hidden" name="action" value="update">
             <input type="hidden" name="titolo" value="<?php echo $titolo; ?>">
@@ -29,7 +29,7 @@ $titolo = htmlspecialchars($_GET['titolo']);
 
         <br>
 
-        <strong><h3>Possibilit&agrave; di eliminare il libro</h3></strong>
+        <strong><h3>Possibilit&agrave; di eliminare il libro <?php echo $titolo;?></h3></strong>
         <form action="script.php" method="post">
           <input type="hidden" name="action" value="delete">
           <input type="hidden" name="titolo" value="<?php echo $titolo; ?>">
