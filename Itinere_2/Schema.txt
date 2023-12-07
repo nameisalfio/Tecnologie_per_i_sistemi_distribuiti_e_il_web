@@ -20,6 +20,11 @@ INSERT, UPDATE, DELETE
 	PreparedStatement stmt = conn.prepareStatement(query);
 	stmt.setString(1, nome);
 	stmt.executeUpdate();
+
+REDIRECT 
+
+response.sendRedirect("index.jsp");
+
 ______________________________________________________________________
 
 PHP
@@ -49,6 +54,10 @@ INSERT, UPDATE, DELETE
     $stmt->execute();
     echo "<p>Libro " . $titolo . " aggiornato</p>";
 
+REDIRECT
+
+header("Location: index.php");
+exit();
 ______________________________________________________________________
 
 Query
