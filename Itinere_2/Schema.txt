@@ -1,4 +1,9 @@
 JAVA
+	
+import java.io.*;
+import java.sql.*; 	-->  <%@ page import="java.sql.*" %>
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
 
 @WebServlet("/servlet")
 
@@ -11,9 +16,14 @@ public void init() throws Exception{
 SELECT
 
 	PreparedStatement stmt = conn.prepareStatement(query);
+	stmt.setString(1, nome);
 	ResultSet res = stmt.executeQuery();
-	while(res.next())
-		out.print("<p>Name: " + res.getString("name") + "</p>"");
+
+    if (result.next()) {
+        do {
+			out.print("<p>Name: " + res.getString("name") + "</p>"");
+        } while (result.next());
+    }
 
 INSERT, UPDATE, DELETE
 	
@@ -37,15 +47,15 @@ CONNECTION
 
 SELECT
 
-	$result = $conn->query($query);
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $_POST["titolo"], $_POST["regista"]); -> opzionale
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $titolo = $row["titolo"];
-            echo "<p>ISBN <a href='redirect.php?titolo=$titolo'>" . $row["isbn"] . "</a>: " . $row["titolo"] . ", Autore: " . $row["autore"] . ", Prezzo: " . $row["prezzo"] . "</p>";
-        }
+        while ($rows = $result->fetch_assoc())
+            echo "<h1>Film richiesto: ".$rows["titolo"].", regista: ".$rows["regista"]."</h1><br>";
     }
-    else
-        echo "<p>Nessun libro trovato nella biblioteca.</p>";
 
 INSERT, UPDATE, DELETE
 
