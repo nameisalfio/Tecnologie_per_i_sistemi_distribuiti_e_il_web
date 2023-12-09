@@ -40,33 +40,38 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <%@ page import="java.sql.*"%>
-        <%
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/University?user=root&password=root");
+        <?php
+            $conn = new mysqli("localhost", "root", "root", "University");
+            if ($conn->connect_error)
+                die($conn->connect_error);
 
-            String query = "SELECT * FROM students";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            ResultSet res = stmt.executeQuery();
+            $query = "SELECT * FROM students";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+            $res = $stmt->get_result();
 
-            if (res.next()) {
-                out.print("<h2>Studenti presenti:</h2>");
-                do {
-                    out.print("<p>Matricola: "+res.getString("matricola")+
-                        ", nome: "+res.getString("nome")+
-                        ", Cognome: "+res.getString("cognome")+
-                        ", Corso di laurea: <a href='/servlet?nome="+res.getString("nome")+
-                                                           "&corso="+res.getString("corso_di_laurea")+
-                                                           "&matricola="+res.getString("matricola")+"'>"+res.getString("corso_di_laurea")+"</a></p>");
-                } while (res.next());
+            if ($res->num_rows > 0) {
+                print("<h2>Studenti presenti:</h2>");
+                while ($rows = $res->fetch_assoc()) {
+                    print("<p>Matricola: ".$rows["matricola"].
+                        ", nome: ".$rows["nome"].
+                        ", Cognome: ".$rows["cognome"].
+                        ", Corso di laurea: <a href='script.php?nome=".$rows["nome"].
+                                                           "&corso=".$rows["corso_di_laurea"].
+                                                           "&matricola=".$rows["matricola"]."'>".$rows["corso_di_laurea"]."</a></p>");
+                } 
             } else {
-                out.print("Nessuno studente presente");
+                print("Nessuno studente presente");
             }
-        %>
+
+            $stmt->close();
+            $conn->close();
+        ?>
     </head>
     <body>
         <br>
         <h3>Inserisci studente</h3>
-        <form action="/servlet" method="POST">
+        <form action="script.php" method="POST">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome"><br>
             <label for="cognome">Cognome:</label>

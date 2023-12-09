@@ -23,6 +23,7 @@ public class StudentServlet extends HttpServlet{
             resp.setContentType("text/html");
             PrintWriter out = resp.getWriter();
 
+            out.print("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/style.css\">");
             String corso_ = (String)req.getParameter("corso");
             String nome = (String)req.getParameter("nome");
             String matricola = (String)req.getParameter("matricola");
@@ -72,6 +73,7 @@ public class StudentServlet extends HttpServlet{
         try {
             resp.setContentType("text/html");
             PrintWriter out = resp.getWriter();
+            out.print("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/style.css\">");
 
             if (req.getParameter("action") != null) {
                 
