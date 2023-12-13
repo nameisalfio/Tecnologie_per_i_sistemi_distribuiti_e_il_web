@@ -1,0 +1,17 @@
+model/Piatto.class
+metodi/ClienteDao.class
+model/Tavolo.class
+model/Cameriere.class
+metodi/OrdineDao.class
+metodi/CameriereDao.class
+control/Paga.class
+metodi/LoginDao.class
+metodi/TavoloDao.class
+metodi/PiattoDao.class
+metodi/CambioData.class
+metodi/PagamentoDao.class
+model/Cliente.class
+model/Pagamento.class
+control/Prenota.class
+model/Ordine.class
+metodi/Query.class

@@ -10,7 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 Connection conn;
 
 public void init() throws Exception{
-    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Biblioteca?user=root&password=root");  
+    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/database?user=root&password=root");  
 }
 
 SELECT
@@ -41,7 +41,7 @@ PHP
 
 CONNECTION
 
-	$conn = new mysqli("localhost", "root", "root", "Biblioteca");
+	$conn = new mysqli("localhost", "root", "root", "Database");
 	if ($conn->connect_error) 
 	    die("Connessione fallita: " . $conn->connect_error);
 
@@ -79,9 +79,9 @@ Query
 
 Form
 
-	<form action="/servlet" method="post">
-        <label for="titolo">Titolo:</label>
-        <input type="text" id="titolo" name="titolo" required><br>
-        <!-- Altri campi -->
-        <input type="hidden" name="action" value="create"> 
+    <form action="/store" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome"><br>
+      	....
+        <button name="action" value="create">Inserisci</button>
     </form>
