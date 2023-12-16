@@ -1,0 +1,44 @@
+<!--
+    cameriere : id(AI), nome, cognome, username, password
+    tavolo : id(AI), id_cameriere, num_posti, stato
+
+    1) Inserimento di un cameriere 
+    2) Visualizzazione di tutti i tavoli e di tutti i camerieri
+
+    3) Possibilità di occcupare e disoccupare un tavolo
+    4) Rimuovere un cameriere
+-->
+
+<html>
+    <body>
+        <h2>Ristorante</h2>
+
+        <form action="script.php" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome"><br>
+
+            <label for="cognome">Cognome:</label>
+            <input type="text" name="cognome"><br>
+
+            <label for="username">Username:</label>
+            <input type="text" name="username"><br>
+
+            <label for="password">Password:</label>
+            <input type="text" name="password"><br><br>
+            <button>Inserisci</button>
+            <input type="hidden" name="action" value="create">
+        </form>
+
+        <br>
+
+        <form action="script.php" method="GET">
+            <button>Vedi tavoli</button>
+            <input type="hidden" name="action" value="read_table">
+        </form>
+        <form action="script.php" method="GET">
+            <button>Vedi camerieri</button>
+            <input type="hidden" name="action" value="read_waiter">
+        </form>
+
+    </body>
+</html>
