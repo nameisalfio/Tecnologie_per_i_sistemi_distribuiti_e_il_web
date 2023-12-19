@@ -17,37 +17,28 @@ Sviluppare uno o più script PHP e pagine HTML che implementino le funzionalità
 - Aggiungere, in quest’ultimo form di aggiornamento, un bottone per l’eliminazione del record dalla tabella books.
 
     ISBN TITOLO AUTORE PREZZO
+
+    08:18
 -->
 
-
 <html>
-    <head>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
     <body>
         <h2>Books</h2>
 
-        <h4>Visualizza la lista di libri</h4>
-        <a href="/servlet"><button>Vedi tutti</button></a>
-
-        <br>
-
-        <h4>Registra un nuovo libro</h4>
-        <form action="/servlet" method="post">
+        <form action="/book" method="POST">
             <label for="titolo">Titolo:</label>
-            <input type="text" id="titolo" name="titolo" required><br>
-            
+            <input type="text" name="titolo"><br>
             <label for="autore">Autore:</label>
-            <input type="text" id="autore" name="autore" required><br>
-            
+            <input type="text" name="autore"><br>
             <label for="prezzo">Prezzo:</label>
-            <input type="text" id="prezzo" name="prezzo" required><br><br>
-
-            <button type="submit">Registra</button>
-
-            <!-- Specifica l'azione che deve compiere il server -->
-            <input type="hidden" name="action" value="create"> 
+            <input type="text" name="prezzo"><br><br>
+            <button>Inserisci libro</button>
+            <input type="hidden" name="action" value="create">
         </form>
 
+        <form action="/book" method="GET">
+            <button>Vedi tutti</button>
+            <input type="hidden" name="action" value="read">
+        </form>
     </body>
 </html>
