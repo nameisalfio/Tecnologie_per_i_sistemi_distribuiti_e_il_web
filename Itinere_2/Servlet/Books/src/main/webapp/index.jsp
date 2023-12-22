@@ -26,12 +26,9 @@ Sviluppare uno o più script PHP e pagine HTML che implementino le funzionalità
         <h2>Books</h2>
 
         <form action="/book" method="POST">
-            <label for="titolo">Titolo:</label>
-            <input type="text" name="titolo"><br>
-            <label for="autore">Autore:</label>
-            <input type="text" name="autore"><br>
-            <label for="prezzo">Prezzo:</label>
-            <input type="text" name="prezzo"><br><br>
+            Titolo:<input type="text" name="titolo"><br>
+            Autore:<input type="text" name="autore"><br>
+            Prezzo:<input type="text" name="prezzo"><br><br>
             <button>Inserisci libro</button>
             <input type="hidden" name="action" value="create">
         </form>

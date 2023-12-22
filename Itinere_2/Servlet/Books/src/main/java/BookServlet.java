@@ -39,12 +39,11 @@ public class BookServlet extends HttpServlet{
                 String autore = req.getParameter("autore");
                 String prezzo = req.getParameter("prezzo");
                 out.print("<form action='/book' method='POST'>");
-                out.print("<label for='titolo'>Titolo:</label>");
-                out.print("<input type='text' name='titolo' value="+titolo+"><br>");
-                out.print("<label for='autore'>Autore:</label>");
-                out.print("<input type='text' name='autore' value="+autore+"><br>");
-                out.print("<label for='prezzo'>Prezzo:</label>");
-                out.print("<input type='text' name='prezzo' value="+prezzo+"><br><br>");
+
+                out.print("Titolo:<input type='text' name='titolo' value="+titolo+"><br>");
+                out.print("Autore<input type='text' name='autore' value="+autore+"><br>");
+                out.print("Prezzo<input type='text' name='prezzo' value="+prezzo+"><br><br>");
+                
                 out.print("<input type='submit' name='action' value='Aggiorna'>");
                 out.print("<input type='submit' name='action' value='Rimuovi'>");
                 out.print("<input type='hidden' name='isbn' value="+isbn+">");

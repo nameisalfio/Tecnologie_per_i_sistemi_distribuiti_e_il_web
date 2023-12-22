@@ -1,0 +1,47 @@
+/* Reset dei margini e dei padding */
+body, h2, h4, form, input, select {
+    margin: 0;
+    padding: 0;
+}
+
+/* Stile del corpo della pagina */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 20px;
+}
+
+/* Titoli */
+h2 {
+    color: #333;
+}
+
+h4 {
+    color: #555;
+}
+
+/* Forme */
+form {
+    margin-bottom: 20px;
+}
+
+/* Input text e select */
+input[type="text"], select, input[type="date"] {
+    margin: 5px 0;
+    padding: 8px;
+    width: 200px;
+}
+
+/* Pulsanti */
+input[type="submit"] {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Pulsanti:hover */
+input[type="submit"]:hover {
+    background-color: #45a049;
+}

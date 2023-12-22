@@ -6,21 +6,7 @@
     2) di effettuare una ricerca di record per autore.
 
     3) di maggiorare il prezzo del 10% per i record il cui paese di pubblicazione sia l'Italia e del 20% per tutti 
-    gli altri paesi.
-
-    uso di Select e Option:
-    <select name="nome">
-        <option value="valore_1">valore1</option>
-        <option value="valore_2">valore2</option>
-        .
-        .
-        .
-        <option value="valore_n">valore_n</option>
-    </select>
-
-    authors : id firstname lastname year_of_birth
-    books2 : id isbn title author publisher country price
-    country : id iso name nicename iso3 numcode phonecode
+       gli altri paesi.
 -->
 
 <html>
