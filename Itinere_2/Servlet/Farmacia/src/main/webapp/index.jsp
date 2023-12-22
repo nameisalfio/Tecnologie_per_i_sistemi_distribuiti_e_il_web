@@ -41,8 +41,9 @@
         <form action="/farmacia" method="GET">
             Principio attivo:
             <select name="Principio_Attivo">
-                <% for (String principioAttivo : Principi_Attivi)%>
+                <% for (String principioAttivo : Principi_Attivi) { %>
                     <option value="<%= principioAttivo %>"><%= principioAttivo %></option>
+                <% } %>
                 <option value='Vedi tutti'>Vedi tutti</option>
             </select>
             <input type="submit" name="action" value="Ricerca">
@@ -52,8 +53,9 @@
         <form action="/farmacia" method="POST">
             Nome medicinale:
             <select name="Nome_Medicinale">
-                <% for (String nomeMedicinale : Nomi_Medicinali)%>
+                <% for (String nomeMedicinale : Nomi_Medicinali) { %>
                     <option value="<%= nomeMedicinale %>"><%= nomeMedicinale %></option>
+                <% } %>
             </select>
             Scadenza:<input type="date" name="Scadenza">
             <input type="submit" name="action" value="Aggiorna">
@@ -63,8 +65,9 @@
         <form action="/farmacia" method="POST">
             Nome medicinale:
             <select name="Nome_Medicinale">
-                <% for (String nomeMedicinale : Nomi_Medicinali) %>
+                <% for (String nomeMedicinale : Nomi_Medicinali) { %>
                     <option value="<%= nomeMedicinale %>"><%= nomeMedicinale %></option>
+                <% } %>
             </select>
             <input type="submit" name="action" value="Rimuovi">
         </form>
