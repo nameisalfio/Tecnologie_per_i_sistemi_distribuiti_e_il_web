@@ -1,0 +1,7 @@
+1) Crea un progetto di Laravel
+
+laravel new -n app
+
+2) Inizia lo sviluppo Laravel 
+
+cd app; php artisan serve;
