@@ -2,16 +2,16 @@
     <body>
         <h3>Aggiorna Libro</h3>
 
-        <form action="/books/update" method="POST">
+        <form action="/update" method="POST">
             @csrf
             @method('PUT')
             
-            <input type="hidden" name="isbn" value="{{$book->isbn}}">
-            Titolo: <input type="text" name="titolo" value="{{$book->titolo}}"><br>
-            Autore: <input type="text" name="autore" value="{{$book->autore}}"><br>
-            Prezzo: <input type="text" name="prezzo" value="{{$book->prezzo}}"><br><br>
+            Titolo: <input type="text" name="titolo" value="{{$_GET['titolo']}}"><br>
+            Autore: <input type="text" name="autore" value="{{$_GET['autore']}}"><br>
+            Prezzo: <input type="text" name="prezzo" value="{{$_GET['prezzo']}}"><br><br>
             
             <button type="submit">Salva Modifiche</button>
+            <input type="hidden" name="isbn" value="{{$_GET['isbn']}}">
         </form>
 
         <br><a href='/'><button>Torna alla home</button></a>

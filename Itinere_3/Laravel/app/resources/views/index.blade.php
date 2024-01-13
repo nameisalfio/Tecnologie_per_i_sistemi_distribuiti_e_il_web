@@ -2,8 +2,9 @@
     <body>
         <h2>Libri</h2>
 
-        <form action="/books" method="POST">
+        <form action="/insert" method="POST">
             @csrf
+            
             Titolo:<input type='text' name='titolo' required><br>
             Autore:<input type='text' name='autore' required><br>
             Prezzo:<input type='text' name='prezzo' required><br><br>
@@ -11,7 +12,7 @@
         </form>
         <br>
 
-        <form action="/books" method="GET">
+        <form action="/read" method="GET">
             <button>Vedi tutti</button>
         </form>
 

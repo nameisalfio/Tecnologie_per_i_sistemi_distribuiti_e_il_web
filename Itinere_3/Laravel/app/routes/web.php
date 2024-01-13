@@ -7,8 +7,14 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/books', [BookController::class, 'read']);
-Route::post('/books', [BookController::class, 'insert']);
-Route::get('/books/form', [BookController::class, 'showForm']);
-Route::put('/books/update', [BookController::class, 'update']);
-Route::delete('/books/delete', [BookController::class, 'delete']);
+Route::get('/update', function () {
+    return view('update');
+});
+
+Route::get('/read', [BookController::class, 'read']);
+
+Route::post('/insert', [BookController::class, 'insert']);
+
+Route::put('/update', [BookController::class, 'update']);
+
+Route::delete('/delete', [BookController::class, 'delete']);

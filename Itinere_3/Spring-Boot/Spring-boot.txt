@@ -1,0 +1,26 @@
+- Creare un jar
+
+	mvn install 
+	java -jar target/<nome>.jar
+
+- Eseguire il jar
+
+	java -jar <nome>.jar
+__________________________________________
+
+SPRING-BOOT
+
+1) Creare un archivio e estrarlo
+
+	https://start.spring.io
+
+2) Inserire le dipendenze in fase di creazione
+
+	- Spring Web
+	- Thymeleaf
+	- Spring Data JPA
+	- MySQL Driver
+
+x) Eseguire sul server
+
+	mvn spring-boot:run
