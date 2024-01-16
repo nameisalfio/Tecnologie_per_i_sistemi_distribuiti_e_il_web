@@ -4,10 +4,10 @@
 
         <form action="/update" method="POST" th:object="${student}">
             <!-- Use '*' for refer to object "student" declared above with th:object -->
-            <input type="hidden" th:field="*{id}" /> 
             Name: <input type="text" th:field="*{name}" /><br>
             Age: <input type="text" th:field="*{age}" /><br><br>
             <button type="submit">Salva modifiche</button>
+            <input type="hidden" th:field="*{id}" /> 
         </form>
 
         <br><a href="/"><button>Torna alla home</button></a>

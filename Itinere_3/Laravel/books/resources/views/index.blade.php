@@ -2,7 +2,7 @@
     <body>
         <h2>Libri</h2>
 
-        <form action="/insert" method="POST">
+        <form action="/create" method="POST">
             @csrf
             
             Titolo:<input type='text' name='titolo' required><br>

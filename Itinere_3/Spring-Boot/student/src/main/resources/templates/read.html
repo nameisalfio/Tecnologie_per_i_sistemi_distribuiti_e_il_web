@@ -2,7 +2,7 @@
     <body>
         <h2>Studenti presenti</h2>
 
-        <form th:each="student : ${Students}" action="/form" method="POST">
+        <form action="/form" method="POST" th:each="student : ${Students}">
             ID: <span th:text="${student.id}"></span> - 
             Nome: <span th:text="${student.name}"></span> - 
             Et&agrave;: <span th:text="${student.age}"></span>
