@@ -1,7 +1,97 @@
 1) Crea un progetto di Laravel
 
-laravel new -n app
+	laravel new -n app
 
 2) Inizia lo sviluppo Laravel 
 
-cd app; php artisan serve;
+	cd app; php artisan serve;
+
+3) Creazione di una migration
+
+	- php artisan make:migration create_books_table
+
+4) Modificare la migration
+
+    Schema::create('books', function (Blueprint $table) {
+        $table->string('isbn');
+        $table->string('titolo');
+        $table->string('autore');
+        $table->decimal('prezzo', 8, 2);
+
+        $table->primary('isbn');
+    });
+
+5) Avviare la migration
+
+	- php artisan migrate
+	- php artisan migrate:rollback
+
+6) Creare un model contestualmente al controller
+
+	- php artisan make:controller BooksController --resource --model=Book
+
+	--> nel model:
+
+		protected $table = 'books';
+	    protected $primaryKey = 'isbn';
+	    public $timestamps = false;
+
+	    protected $fillable = ['titolo', 'autore', 'prezzo'];
+
+	--> nel controller:
+
+		class ProductController extends Controller
+		{
+		    public function read()
+		    {
+		        return view('read', ['products' => Product::all()]);
+		    }
+
+		    public function create(Request $request)
+		    {
+		        Product::create($request->all());
+		        return redirect('/read');
+		    }
+
+		    public function form(Request $request)
+		    {
+		        if ($request->input("action") === "Modifica")
+		        {
+		            return view('update', ['product' => (object)$request->all()]);
+		        }
+
+		        if ($request->input("action") === "Rimuovi")
+		        {
+		            $product = Product::find($request->input('id'));
+		            $product->delete();
+		        }
+
+		        return redirect('/read');
+		    }
+
+		    public function update(Request $request)
+		    {
+		        $product = Product::find($request->input('id'));
+		        $product->update($request->all()); // Simile alla create
+		        return redirect('/read');
+		    }
+		}
+		
+7) Route
+
+    <?php
+
+    use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\BooksController;
+
+    Route::get('/', function () {
+        return view('index');
+    });
+
+    Route::get('/read', [BooksController::class, 'read']);
+
+    Route::post('/create', [BooksController::class, 'create']);
+
+    Route::post('/form', [BooksController::class, 'form']);
+
+    Route:
