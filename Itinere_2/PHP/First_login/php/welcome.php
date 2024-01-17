@@ -11,8 +11,7 @@
         
         echo "<br>";
         echo "<p>Ti chiami " . $_SESSION["username"] . " e hai " . $_SESSION["age"] . " anni</p>";
-        echo "<br>";
     ?>
-    <a href="../index.html"><button id="logout">Logout</button></a>
+    <br><a href="../index.html"><button id="orange">Logout</button></a>
 </body>
 </html>

@@ -18,7 +18,7 @@ strong {
     color: #555;
 }
 
-form {
+.main-form {
     max-width: 300px;
     margin: 20px auto;
     background: #fff;
@@ -51,26 +51,39 @@ button {
     cursor: pointer;
 }
 
-#login {
+#green {
     background-color: #4caf50;
 }
 
-#login:hover {
+#green:hover {
     background-color: #45a049;
 }
 
-#delete {
+#update {
+    color: white;
+    padding: 8px 12px; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #2196F3;
+}
+
+#update:hover {
+    background-color: #0b7dda; 
+}
+
+#red {
     background-color: #b00808;
 }
 
-#delete:hover {
+#red:hover {
     background-color: #d01f0b;
 }
 
-#logout {
+#orange {
     background-color: #FFA500;
 }
 
-#logout:hover {
+#orange:hover {
     background-color: #d01f0b;
 }

@@ -5,44 +5,49 @@
         <title>Login</title>
     </head>
     <body>
-        <h1>Login</h1>
+        <h2>Login</h2>
         <strong><p>Benvenuto al login</p></strong>
 
-        <form action="./php/register.php" method="post">
+        <!--Create-->
+        <form action="php/script.php" method="POST" class='main-form'>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <br>            
+            <input type="text" name="username" required><br>            
             <label for="age">Età:</label>
-            <input type="text" id="age" name="age" required>
-            <br>
+            <input type="text" name="age" required><br>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
+            <input type="email" name="email" required><br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <button type="submit" id="login">Register me</button>
+            <input type="password" name="password" required><br>
+            <button id="green">Register me</button>
+            <input type="hidden" name="action" value="create">
         </form> 
 
-        <form action="./php/login.php" method="post">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
+        <!--Login-->
+        <form action="php/script.php" method="POST" class='main-form'>
+            <label for="username">Username:</label>
+            <input type="text" name="username" required><br>  
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <button type="submit" id="login">Login</button>
+            <input type="password" name="password" required><br>
+            <button id="green">Login</button>
+            <input type="hidden" name="action" value="login">
         </form> 
 
-        <form action="./php/delete.php" method="post">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
+        <!--Delete-->
+        <form action="php/script.php" method="POST" class='main-form'>
+            <label for="username">Username:</label>
+            <input type="text" name="username" required><br>  
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <button type="submit" id="delete">Delete me</button>
-        </form> 
+            <input type="password" name="password" required><br>
+            <button id="red">Delete me</button>
+            <input type="hidden" name="action" value="delete">
+        </form>     
+
+        <br>
+
+        <!--View all-->
+        <form action="php/script.php" method="GET">
+            <button id="green" >Vedi tutti</button>
+        </form>
 
     </body>
 </html>
