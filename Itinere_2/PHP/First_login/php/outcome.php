@@ -11,7 +11,7 @@
         
         echo "<br><p>" . $_SESSION["message"] . "</p>";
         echo "<br><p> Username: " . $_SESSION["username"] . "</p>";
-        echo "<br><p> Password: " . $_SESSION["password"] . "</p>";
+        echo "<br><p> Email: " . $_SESSION["email"] . "</p>";
     ?>
     <br><a href="../index.html"><button id="orange">Torna alla homepage</button></a>
 </body>

@@ -11,6 +11,7 @@
                 <input type="hidden" name="nome" value="{{$product->nome}}">
                 <input type="hidden" name="giacenza" value="{{$product->giacenza}}">
                 <input type="hidden" name="prezzo" value="{{$product->prezzo}}">
+                
                 <input type="submit" name="action" value="Modifica">
                 <input type="submit" name="action" value="Rimuovi">
             </form>

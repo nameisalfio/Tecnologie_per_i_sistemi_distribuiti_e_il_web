@@ -27,6 +27,14 @@ SPRING-BOOT
 
 ________________________________________________________
 
+// application.properties
+
+	spring.datasource.url=jdbc:mysql://localhost:3306/students
+	spring.datasource.username=root
+	spring.datasource.password=root
+	spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+	spring.jpa.hibernate.ddl-auto=update
+
 // MODEL
 
 package com.example.student.model;
@@ -35,7 +43,7 @@ package com.example.student.model;
 	public class Student {
 
 		@Id
-		@GeneratedValue
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 		Long id;
 		...
@@ -72,12 +80,14 @@ package com.example.student.model;
 	package com.example.student.controller;
 
 	@Controller
-	public class StudentContoller {
+public class StudentController {
+    
+    private final StudentRepository repo;
 
-		final StudentRepository repo;
+    public StudentController(StudentRepository repo) {
+        this.repo = repo;
+    }
 
-		...
-		
     // Home
     @GetMapping("/")
     public String index() {
@@ -100,7 +110,7 @@ package com.example.student.model;
 
     // Delete or Update
     @PostMapping("/form")
-    public String form(@RequestParam String action, @RequestParam Long id, Model model) {
+    public String form(String action, Long id, Model model) {
 
         if (action.equals("Modifica")) {
             Student student = repo.findById(id).orElse(null); // Find record in databse

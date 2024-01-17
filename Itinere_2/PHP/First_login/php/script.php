@@ -10,6 +10,8 @@ $conn = new mysqli($hostname, $username_db, $password_db, $name_db);
 if ($conn->connect_error)
     die("Connessione fallita: " . $conn->connect_error);
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] === "GET") 
 {
     $query = "SELECT *
@@ -23,8 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET")
     {
         while ($row = $result->fetch_assoc()) 
         {
-            session_start();
-
             $_SESSION["id"] = $id = $row['id'];
             $_SESSION["username"] = $username = $row['username'];
             $_SESSION["age"] = $age = $row['age'];
@@ -45,8 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET")
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
 {
-    session_start();
-
     if ($_POST["action"] === "create") 
     {
         $username = $_POST['username'];
@@ -62,7 +60,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) 
+        {
             $_SESSION["message"] = "Account registrato correttamente";
+            $_SESSION["username"] = $username; 
+            $_SESSION["email"] = $email; 
+        } 
         else 
             $_SESSION["message"] = "Registrazione account non riuscita. Verifica le tue credenziali";
 
@@ -109,9 +111,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
     if ($_POST["action"] === "update") 
     {
-        session_start();
-        //var_dump($_SESSION);
-
         $id = $_SESSION['id'];
         $username = $_SESSION['username'];
         $age = $_SESSION['age'];

@@ -3,7 +3,6 @@ package com.example.student.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
 import com.example.student.model.Student;
@@ -40,7 +39,7 @@ public class StudentController {
 
     // Delete or Update
     @PostMapping("/form")
-    public String form(@RequestParam String action, @RequestParam Long id, Model model) {
+    public String form(String action, Long id, Model model) {
 
         if (action.equals("Modifica")) {
             Student student = repo.findById(id).orElse(null); // Find record in databse

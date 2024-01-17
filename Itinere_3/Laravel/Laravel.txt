@@ -17,8 +17,7 @@
         $table->string('titolo');
         $table->string('autore');
         $table->decimal('prezzo', 8, 2);
-
-        $table->primary('isbn');
+        $table->timestamps();
     });
 
 5) Avviare la migration
@@ -31,10 +30,6 @@
 	- php artisan make:controller BooksController --resource --model=Book
 
 	--> nel model:
-
-		protected $table = 'books';
-	    protected $primaryKey = 'isbn';
-	    public $timestamps = false;
 
 	    protected $fillable = ['titolo', 'autore', 'prezzo'];
 
@@ -79,19 +74,120 @@
 		
 7) Route
 
-    <?php
+    php artisan route:list
 
-    use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\BooksController;
+8) Programmazione agile
 
-    Route::get('/', function () {
-        return view('index');
-    });
+	php artisan make:model Game -mcr
 
-    Route::get('/read', [BooksController::class, 'read']);
 
-    Route::post('/create', [BooksController::class, 'create']);
+9)  // Nella classe Game
 
-    Route::post('/form', [BooksController::class, 'form']);
+    public function player()
+    {
+        return $this->belongsTo(Player::class);
+    }
 
-    Route:
+    // Nella classe Player
+
+    public function games()
+    {
+        return $this->hasMany(Game::class);
+    }
+
+10) Modifica le migrates
+
+    public function up(): void
+    {
+        Schema::create('games', function (Blueprint $table) {
+            $table->id();
+            $table->string("nome");
+            $table->unsignedBigInteger("player");
+            $table->decimal("prezzo", 8, 2);
+            $table->timestamps();
+            
+            $table->foreign('player')->references('id')->on('players')->onDelete('cascade');
+        });
+    }
+
+    public function up(): void
+    {
+        Schema::create('players', function (Blueprint $table) {
+            $table->id();
+            $table->string("nome");
+            $table->timestamps();
+        });
+    }
+
+// Model
+
+	class Game extends Model
+	{
+	    use HasFactory;
+
+	    protected $fillable = ['nome', 'player_id', 'prezzo']; // Aggiungi i campi necessari
+
+	    // Relazione con il giocatore
+	    public function player()
+	    {
+	        return $this->belongsTo(Player::class);
+	    }
+	}
+	****************************************
+	class Player extends Model
+	{
+	    use HasFactory;
+
+	    protected $fillable = ['name']; // Aggiungi i campi necessari
+
+	    // Relazione con i giochi
+	    public function games()
+	    {
+	        return $this->hasMany(Game::class);
+	    }
+	}
+
+9) Route
+
+	Route::resource('games', GameController::class);
+
+	Route::resource('players', PlayerController::class);
+
+10) Spiegazione
+
+	Games Views:
+
+		Index View: Mostra l'elenco di tutti i giochi.
+
+		Path: resources/views/games/index.blade.php
+		URL: /games
+		Create View: Form per creare un nuovo gioco.
+
+		Path: resources/views/games/create.blade.php
+		URL: /games/create
+		Show View: Mostra i dettagli di un singolo gioco.
+
+		Path: resources/views/games/show.blade.php
+		URL: /games/{game} (dove {game} è l'id del gioco)
+		Edit View: Form per modificare un gioco esistente.
+
+		Path: resources/views/games/edit.blade.php
+		URL: /games/{game}/edit (dove {game} è l'id del gioco)
+		Players Views:
+
+	Index View: Mostra l'elenco di tutti i giocatori.
+
+		Path: resources/views/players/index.blade.php
+		URL: /players
+		Create View: Form per creare un nuovo giocatore.
+
+		Path: resources/views/players/create.blade.php
+		URL: /players/create
+		Show View: Mostra i dettagli di un singolo giocatore.
+
+		Path: resources/views/players/show.blade.php
+		URL: /players/{player} (dove {player} è l'id del giocatore)
+		Edit View: Form per modificare un giocatore esistente.
+
+		Path: resources/views/players/edit.blade.php
+		URL: /players/{player}/edit (dove {player} è l'id del giocatore)

@@ -20,16 +20,13 @@ class ProductController extends Controller
 
     public function form(Request $request)
     {
+        $product = Product::find($request->input('id'));
+
         if ($request->input("action") === "Modifica")
-        {
-            return view('update', ['product' => (object)$request->all()]);
-        }
+            return view('update', ['product' => $product]);
 
         if ($request->input("action") === "Rimuovi")
-        {
-            $product = Product::find($request->input('id'));
             $product->delete();
-        }
 
         return redirect('/read');
     }
