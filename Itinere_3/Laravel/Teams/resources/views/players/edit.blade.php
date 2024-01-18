@@ -5,15 +5,17 @@
         @method('put')
 
         Nome:<input type="text" name="nome" value="{{ $player->nome }}" required>
-        Numero di maglia:<input type="text" name="no_maglia" value="{{ $player->prezzo }}" required>
+        Numero di maglia:<input type="text" name="n_maglia" value="{{ $player->n_maglia }}" required>
         Squadra:
         <select name="team" required>
-            @foreach($players as $player)
+            @foreach($teams as $team)
                 <option value="{{ $team->id }}">{{ $team->nome }}</option>
             @endforeach
         </select>
 
         <button type="submit">Modifica Gioco</button>
+
+        <a href="{{ route('players.index') }}"><button>Torna all'elenco</button></a>
     </form>
     </body>
 </html>

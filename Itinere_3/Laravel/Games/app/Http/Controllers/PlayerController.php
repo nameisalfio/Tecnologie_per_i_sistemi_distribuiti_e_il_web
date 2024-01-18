@@ -30,7 +30,7 @@ class PlayerController extends Controller
 
     public function edit(Player $player)
     {
-        return view('players.edit', compact('player'));
+        return view('players.edit', ["player" => $player]);
     }
 
     public function update(Request $request, Player $player)

@@ -6,10 +6,10 @@
             @csrf
 
             Nome:<input type="text" name="nome" required>
-            Numero della maglia:<input type="text" name="no_maglia" required>
+            Numero della maglia:<input type="text" name="n_maglia" required>
             Squadra:
             <select name="team" required>
-                @foreach($players as $player)
+                @foreach($teams as $team)
                     <option value="{{ $team->id }}">{{ $team->nome }}</option>
                 @endforeach
             </select>
