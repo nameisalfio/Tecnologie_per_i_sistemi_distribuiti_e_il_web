@@ -9,5 +9,4 @@ Route::get('/', function () {
 });
 
 Route::resource('games', GameController::class);
-
 Route::resource('players', PlayerController::class);
