@@ -10,6 +10,8 @@
             </p>
         @endforeach
 
-        <br><a href="{{ route('players.create') }}"><button> Nuovo Giocatore</button></a>
+        <a href="{{ route('players.create') }}"><button> Nuovo Giocatore</button></a>
+        <br><br><a href="../"><button>Home</button></a>
+
     </body>
 </html>

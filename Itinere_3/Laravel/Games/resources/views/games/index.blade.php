@@ -11,5 +11,7 @@
         @endforeach
 
         <a href="{{ route('games.create') }}">Crea Nuovo Gioco</a>
+
+        <br><br><a href="../"><button>Home</button></a>
     </body>
 </html>

@@ -5,7 +5,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\PlayerController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::resource('games', GameController::class);

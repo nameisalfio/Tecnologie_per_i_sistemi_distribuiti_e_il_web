@@ -2,8 +2,8 @@
     <body>
         <h1>Dettagli Giocatore</h1>
 
-        <p><strong>ID:</strong> {{ $player->id }}</p>
-        <p><strong>Nome:</strong> {{ $player->nome }}</p>
+        <p>ID: {{ $player->id }}</p>
+        <p>Nome: {{ $player->nome }}</p>
 
         <form action="{{ route('players.destroy', $player->id) }}" method="POST">
             @csrf
