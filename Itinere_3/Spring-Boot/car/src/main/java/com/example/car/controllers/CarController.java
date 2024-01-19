@@ -36,15 +36,13 @@ public class CarController {
 
     @GetMapping("/show")
     public String show(Long id, Model model) {
-        Car car = repo.findById(id).orElse(null);
-        model.addAttribute("car", car);
+        model.addAttribute("car", repo.findById(id).orElse(null));
         return "show";
     }
 
     @GetMapping("/edit")
     public String edit(Model model, Long id) {
-        Car car = repo.findById(id).orElse(null);
-        model.addAttribute("car", car);
+        model.addAttribute("car", repo.findById(id).orElse(null));
         return "edit";
     }
 

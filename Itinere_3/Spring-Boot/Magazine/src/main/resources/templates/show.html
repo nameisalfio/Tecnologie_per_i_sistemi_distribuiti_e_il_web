@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h2>Dettagli</h2>
+        
+        <ul>
+            <li>ID: <span th:text="${product.id}"></span></li>
+            <li>Nome: <span th:text="${product.nome_prodotto}"></span></li>
+            <li>Giacenza: <span th:text="${product.giacenza}"></span></li>
+            <li>Prezzo: <span th:text="${product.prezzo}"></span></li>
+        </ul>
+        <br>
+        <form action="/delete" method="POST">
+            <button>Rimuovi</button>
+            <input type="hidden" name="id" th:value="${product.id}"/>
+        </form>
+
+        <a href="/"><button>Torna alla home</button></a>
+    </body>
+</html>
