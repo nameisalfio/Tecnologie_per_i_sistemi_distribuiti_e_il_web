@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <h2>Cars</h2>
+
+        <form th:each="car:${Cars}">
+            ID: <span th:text="${car.id}"></span> - Marca: <span th:text="${car.marca}"></span>
+            <button formaction="/show" method="GET">Dettagli</button>
+            <button formaction="/edit" method="GET">Modifica</button>
+            <input type="hidden" name="id" th:value="${car.id}"/>
+        </form>
+        
+        <br>
+        <form action="/create" method="GET">
+            <button>Crea una nuova macchina</button>
+        </form>
+        
+    </body>
+</html>

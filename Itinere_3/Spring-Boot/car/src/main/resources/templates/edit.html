@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h2>Modifica</h2>
+
+        <form action="/update" method="POST" th:object="${car}">
+            Marca:<input type="text" th:field="*{marca}"><br>
+            Velocità massima:<input type="text" th:field="*{speed_max}"><br>
+            Targa:<input type="text" th:field="*{targa}"><br><br>
+            <button>Salva modifiche</button>
+            <input type="hidden" th:field="*{id}"/>
+        </form>
+
+        <br><a href="/"><button>Torna alla home</button></a>
+        
+    </body>
+</html>
+

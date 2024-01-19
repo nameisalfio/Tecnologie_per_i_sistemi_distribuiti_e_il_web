@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h2>Dettagli</h2>
+        
+        <p>ID: <span th:text="${car.id}"></span></p>
+        <p>Marca: <span th:text="${car.marca}"></span></p>
+        <p>Velocità massima: <span th:text="${car.speed_max}"></span></p>
+        <p>Targa: <span th:text="${car.targa}"></span></p>
+        <br>
+        <form action="/delete" method="POST">
+            <button>Rimuovi</button>
+            <input type="hidden" name="id" th:value="${car.id}"/>
+        </form>
+        
+    </body>
+</html>
+
