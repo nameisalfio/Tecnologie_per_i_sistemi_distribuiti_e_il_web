@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h2>Books</h2>
+        
+        <p>ID: <span th:text="${book.id}"></span></p>
+        <p>Title: <span th:text="${book.title}"></span></p>
+        <p>Student: <span th:text="${book.student.name}"></span></p>
+        <p>Price: <span th:text="${book.price}"></span></p>
+        <br>
+        <form action="/books/delete" method="POST">
+            <button>Delete</button>
+            <input type="hidden" name="id" th:value="${book.id}"/>
+        </form>
+
+        <br><a href="/books"><button>Back at home</button></a>
+    </body>
+</html>

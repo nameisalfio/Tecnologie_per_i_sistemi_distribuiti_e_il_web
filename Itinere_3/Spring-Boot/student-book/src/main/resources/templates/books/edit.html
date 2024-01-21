@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h2>Books</h2>
+
+        <form action="/books/update" method="POST" th:object="${book}">
+            Title:<input type="text" th:field="*{title}"><br>
+            Student:<select type="text" name="student">
+                <div th:each="s:${students}">
+                    <option th:value="${s.id}"><span th:text="${s.name}"></span></option>
+                </div>
+            </select><br>
+            Price:<input type="text" th:field="*{price}"><br><br>
+            <button>Update</button>
+            <input type="hidden" th:field="*{id}"/>
+        </form>
+
+        <br><a href="/books"><button>Back at home</button></a>
+    </body>
+</html>

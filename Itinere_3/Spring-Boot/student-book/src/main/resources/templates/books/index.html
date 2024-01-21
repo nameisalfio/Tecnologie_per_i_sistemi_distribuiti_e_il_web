@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h2>Books</h2>
+
+        <form th:each="b:${books}">
+            <ul>
+                <li>Title:<span th:text="${b.title}"></span></li>
+                <button formaction="/books/show" method="GET">Show</button>
+                <button formaction="/books/edit" method="GET">Edit</button>
+                <input type="hidden" name="id" th:value="${b.id}"/>
+            </ul>
+        </form>
+        <br>
+        <form action="/books/create" method="GET">
+            <button>Create new book</button>
+        </form>
+        
+        <br><a href="/"><button>Back at welcome</button></a>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h2>Students</h2>
+
+        <form th:each="s:${students}">
+            <ul>
+                <li>Name:<span th:text="${s.name}"></span></li>
+                <button formaction="/students/show" method="GET">Show</button>
+                <button formaction="/students/edit" method="GET">Edit</button>
+                <input type="hidden" name="id" th:value="${s.id}"/>
+            </ul>
+        </form>
+        <br>
+        <form action="/students/create" method="GET">
+            <button>Create new student</button>
+        </form>
+        
+        <br><a href="/"><button>Back at welcome</button></a>
+    </body>
+</html>

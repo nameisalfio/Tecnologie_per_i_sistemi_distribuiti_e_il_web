@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h2>Students</h2>
+
+        <form action="/students/update" method="POST" th:object="${student}">
+            Name:<input type="text" th:field="*{name}"><br>
+            Last name:<input type="text" th:field="*{lastname}"><br>
+            Age:<input type="text" th:field="*{age}"><br><br>
+            <button>Update</button>
+            <input type="hidden" th:field="*{id}"/>
+        </form>
+        <br>
+        <form action="/students/delete" method="POST">
+            <button>Delete</button>
+            <input type="hidden" name="id" th:value="${student.id}"/>
+        </form>
+
+        <br><a href="/students"><button>Back at home</button></a>
+    </body>
+</html>

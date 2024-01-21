@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <h2>Books</h2>
+
+        <form action="/books/store" method="POST">
+            Title:<input type="text" name="title" required>
+            Student:<select type="text" name="student" required>
+                <div th:each="s:${students}">
+                    <option th:value="${s.id}"><span th:text="${s.name}"></span></option>
+                </div>
+            </select>
+            Price:<input type="text" name="price" required><br><br>
+            <button>Create now</button>
+        </form>
+
+        <br><a href="/books"><button>Back at home</button></a>
+    </body>
+</html>
