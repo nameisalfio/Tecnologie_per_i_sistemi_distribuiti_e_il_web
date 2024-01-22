@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h2>Edit</h2>
+
+        <form action="/clients/update" method="POST" th:object="${c}">
+            <p>Name:<input name="name" th:field="*{name}"></p>
+            <p>Lastname:<input name="lastname" th:field="*{lastname}"></p>
+            <p>Age:<input name="age" th:field="*{age}"></p><br>
+            <button>Update</button>
+            <input type="hidden" name="id" th:field="*{id}">
+        </form>
+
+        <br><a href="/clients"><button>Back to home</button></a>
+    </body>
+</html>

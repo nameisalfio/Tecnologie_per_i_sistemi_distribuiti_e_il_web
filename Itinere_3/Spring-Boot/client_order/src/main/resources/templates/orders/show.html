@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <h2>Show</h2>
+
+        <p>ID: <span th:text="${o.id}"></span></p>
+        <p>Object: <span th:text="${o.object}"></span></p>
+        <p>Client: <span th:text="${o.client_id.name}"></span></p>
+        <br>
+        <form action="/orders/destroy" method="POST">
+            <button>Delete</button>
+            <input type="hidden" name="id" th:value="${o.id}">
+        </form>
+
+        <br><a href="/orders"><button>Back to home</button></a>
+    </body>
+</html>

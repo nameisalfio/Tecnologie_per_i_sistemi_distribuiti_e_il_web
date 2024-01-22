@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <h2>Create</h2>
+
+        <form action="/orders/store" method="POST">              
+            Object:<input name="object" required><br>
+            Client:
+            <select name="client_id" required>
+                <div th:each="c:${clients}">
+                    <option th:value="${c.id}"><span th:text="${c.name}"></span></option>
+                </div>
+            </select><br><br>
+            <button>Create</button>
+        </form>
+
+        <br><a href="/orders"><button>Back to home</button></a>
+    </body>
+</html>

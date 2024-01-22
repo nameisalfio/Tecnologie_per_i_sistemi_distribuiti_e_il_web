@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h2>Edit</h2>
+
+        <form action="/orders/update" method="POST" th:object="${o}">
+            Object:<input name="name" th:field="*{object}"><br>
+            Client:
+            <select name="client_id">
+                <div th:each="c:${clients}">
+                    <option th:value="${c.id}"><span th:text="${c.name}"></span></option>
+                </div>
+            </select><br><br>
+            <button>Update</button>
+            <input type="hidden" name="id" th:field="*{id}">
+        </form>
+
+        <a href="/orders"><button>Back to home</button></a>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h2>Show</h2>
+
+        <p>ID: <span th:text="${c.id}"></span></p>
+        <p>Name: <span th:text="${c.name}"></span></p>
+        <p>Lastname: <span th:text="${c.lastname}"></span></p>
+        <p>Age: <span th:text="${c.age}"></span></p>
+        <br>
+        <form action="/clients/destroy" method="POST">
+            <button>Delete</button>
+            <input type="hidden" name="id" th:value="${c.id}">
+        </form>
+
+        <br><a href="/clients"><button>Back to home</button></a>
+    </body>
+</html>
