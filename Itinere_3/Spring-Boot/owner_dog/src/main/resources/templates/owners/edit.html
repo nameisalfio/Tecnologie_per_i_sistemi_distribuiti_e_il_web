@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <h2>Edit</h2>
+
+        <form action="/owners/update" method="POST" th:object="${o}">
+            Name:<input name="name" th:field="*{name}">
+            Lastname:<input name="lastname" th:field="*{lastname}">
+            Age:<input name="age" th:field="*{age}">
+            City:<input name="city" th:field="*{city}">
+            <button>Update</button>
+            <input type="hidden" name="id" th:field="*{id}">
+        </form>
+
+        <br><a href="/owners"><button>Back to home</button></a>
+    </body>
+</html>

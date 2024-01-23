@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <h2>Index</h2>
+
+        <form th:each="d:${dogs}">
+            Name: <span th:text="${d.name}"></span>
+            <button formaction="/dogs/show" method="GET">Show</button>
+            <button formaction="/dogs/edit" method="GET">Edit</button>
+            <input type="hidden" name="id" th:value="${d.id}">
+        </form>
+        <br>
+        <form action="/dogs/create" method="GET">
+            <button>Create new dog</button>
+        </form>
+
+        <br><a href="../"><button>Back to Welcome</button></a>
+    </body>
+</html>

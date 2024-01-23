@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h2>Create</h2>
+
+        <form action="/dogs/store" method="POST">
+            Name:<input name="name" required>
+            Breed:<input name="breed" required>
+            Owner:
+            <select name="owner" required>
+                <div th:each="o:${owners}">
+                <option th:value="${o.id}"><span th:text="${o.name}"></span></option>
+                </div>
+            </select>
+            <button>Create</button>
+        </form>
+
+        <br><a href="/dogs"><button>Back to home</button></a>
+    </body>
+</html>

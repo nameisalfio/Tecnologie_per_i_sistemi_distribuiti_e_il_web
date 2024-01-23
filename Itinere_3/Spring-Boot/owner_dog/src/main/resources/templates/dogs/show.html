@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h2>Show</h2>
+
+        ID: <span th:text="${d.id}"></span><br>
+        Name: <span th:text="${d.name}"></span><br>
+        Breed: <span th:text="${d.breed}"></span><br>
+        Owner: <span th:text="${d.owner.name}"></span><br>
+        <br>
+        <form action="/dogs/destroy" method="POST">
+            <button>Delete</button>
+            <input type="hidden" name="id" th:value="${d.id}">
+        </form>
+
+        <br><a href="/dogs"><button>Back to home</button></a>
+    </body>
+</html>

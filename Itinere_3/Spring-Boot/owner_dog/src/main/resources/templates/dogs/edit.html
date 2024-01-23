@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h2>Edit</h2>
+
+        <form action="/dogs/update" method="POST" th:object="${d}">
+            Name:<input name="name" th:field="*{name}">
+            Breed:<input name="breed" th:field="*{breed}">
+            Owner:
+            <select name="owner">
+                <div th:each="o:${owners}">
+                <option th:value="${o.id}"><span th:text="${o.name}"></span></option>
+                </div>
+            </select>
+            <button>Update</button>
+            <input type="hidden" name="id" th:field="*{id}">
+        </form>
+
+        <br><a href="/dogs"><button>Back to home</button></a>
+    </body>
+</html>
