@@ -22,17 +22,6 @@ public class ProductController {
         return "index";
     }
 
-    @GetMapping("/filter")
-    public String filter(Model model, String action) {
-        if (action.equals("filter")){
-            model.addAttribute("products", repo.findByGiacenzaGreaterThan(0));
-            return "filter";
-        } else if (action.equals("unfilter")) {
-
-        }
-        return "redirect:/";
-    }
-
     @GetMapping("/create")
     public String create() {
         return "create";
@@ -45,13 +34,13 @@ public class ProductController {
     }
 
     @GetMapping("/show")
-    public String show(Model model, Long id) {
+    public String show(Long id, Model model) {
         model.addAttribute("product", repo.findById(id).orElse(null));
         return "show";
     }
 
     @GetMapping("/edit")
-    public String edit(Model model, Long id) {
+    public String edit(Long id, Model model) {
         model.addAttribute("product", repo.findById(id).orElse(null));
         return "edit";
     }
@@ -65,6 +54,28 @@ public class ProductController {
     @PostMapping("/delete")
     public String delete(Long id) {
         repo.deleteById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/filter")
+    public String filter(Model model, String action) {
+        if (action.equals("filter")){
+            model.addAttribute("products", repo.findByGiacenzaGreaterThan(0));
+            return "filter";
+        } else {
+            return "redirect:/";
+        }
+    }
+
+    @GetMapping("/decreaseStock")
+    public String decreaseStock(Long id, Model model) {
+        repo.decreaseStock(id);
+        return show(id, model);
+    }
+
+    @PostMapping("/decreaseAllPrices")
+    public String decreaseAllPrices(Integer percentage) {
+        repo.decreaseAllPrices(percentage);
         return "redirect:/";
     }
 }
