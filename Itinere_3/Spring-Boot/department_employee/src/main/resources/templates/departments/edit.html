@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <h2>Edit</h2>
+        <form action="/departments/update" method="POST" th:object="${d}">
+            Name: <input name="name" th:field="*{name}"><br>
+            Faculty: <input name="faculty" th:field="*{faculty}"><br>
+            Location: <input name="location" th:field="*{location}"><br><br>
+            <button>Update</button>
+            <input type="hidden" name="id" th:field="*{id}">
+        </form>    
+        <br><a href="/departments"><button>Back at Home</button></a>
+    </body>
+</html>

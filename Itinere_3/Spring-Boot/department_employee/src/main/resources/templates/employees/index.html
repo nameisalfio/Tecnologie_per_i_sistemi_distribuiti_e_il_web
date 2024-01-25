@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <h2>Index</h2>
+        <form th:each="e:${employees}">
+            <p>Name: <span th:text="${e.name}"></span></p>
+            <button formaction="/employees/show">Show</button>
+            <button formaction="/employees/edit">Edit</button>
+            <button formaction="/employees/increaseSalary">Increase Salary of 20%</button>
+            <input type="hidden" name="id" th:value="${e.id}">
+            <input type="hidden" name="percentage" th:value="20">
+        </form>
+        <br>
+        <form action="/employees/create">
+            <button>Create new employee</button>
+        </form>
+        <br><a href="/"><button>Back at Welcome</button></a>
+    </body>
+</html>

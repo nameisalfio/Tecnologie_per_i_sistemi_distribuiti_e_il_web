@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <h2>Show</h2>
+
+        <p>ID: <span th:text="${d.id}"></span></p>
+        <p>Name: <span th:text="${d.name}"></span></p>
+        <p>Faculty: <span th:text="${d.faculty}"></span></p>
+        <p>Location: <span th:text="${d.location}"></span></p>
+
+        <br>
+        <form action="/departments/destroy" method="POST">
+            <button>Delete</button>
+            <input type="hidden" name="id" th:value="${d.id}">
+        </form>
+
+        <br><a href="/departments"><button>Back at Home</button></a>
+    </body>
+</html>

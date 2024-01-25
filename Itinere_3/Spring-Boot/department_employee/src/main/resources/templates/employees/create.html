@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h2>Create</h2>
+        <form action="/employees/store" method="POST">
+            Name:<input name="name" required>
+            Lastname:<input name="lastname" required>
+            Salary:<input name="salary" required>
+            Department:
+            <select name="department" required>
+                <div th:each="d:${departments}">
+                <option th:value="${d.id}"><span th:text="${d.name}"></span></option>
+                </div>
+            </select>
+            <button>Create</button>
+        </form>
+   
+        <br><a href="/employees"><button>Back at Home</button></a>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h2>Edit</h2>
+        <form action="/employees/update" method="POST" th:object="${e}">
+            Name: <input name="name" th:field="*{name}"><br>
+            Lastname: <input name="lastname" th:field="*{lastname}"><br>
+            Salary: <input name="salary" th:field="*{salary}"><br>
+            Department:
+            <select name="department">
+                <div th:each="d:${departments}">
+                <option th:value="${d.id}"><span th:text="${d.name}"></span></option>
+                </div>
+            </select><br><br>
+            <button>Update</button>
+            <input type="hidden" name="id" th:field="*{id}">
+        </form>    
+        <br><a href="/employees"><button>Back at Home</button></a>
+    </body>
+</html>

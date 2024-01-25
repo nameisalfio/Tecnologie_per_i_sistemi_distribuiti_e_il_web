@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <h2>Index</h2>
+        <form th:each="d:${departments}">
+            <p>Name: <span th:text="${d.name}"></span></p>
+            <button formaction="/departments/show">Show</button>
+            <button formaction="/departments/edit">Edit</button>
+            <input type="hidden" name="id" th:value="${d.id}">
+        </form>
+        <br>
+        <form action="/departments/create">
+            <button>Create new deparment</button>
+        </form>
+        <br><a href="/"><button>Back at Welcome</button></a>
+    </body>
+</html>

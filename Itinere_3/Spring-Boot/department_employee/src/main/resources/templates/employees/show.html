@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <h2>Show</h2>
+
+        <p>ID: <span th:text="${e.id}"></span></p>
+        <p>Name: <span th:text="${e.name}"></span></p>
+        <p>Salary: <span th:text="${e.salary}"></span></p>
+        <p>Department: <span th:text="${e.department.name}"></span></p>
+
+        <br>
+        <form action="/employees/destroy" method="POST">
+            <button>Delete</button>
+            <input type="hidden" name="id" th:value="${e.id}">
+        </form>
+
+        <br><a href="/employees"><button>Back at Home</button></a>
+    </body>
+</html>
