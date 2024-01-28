@@ -1,0 +1,18 @@
+<html>
+    <h2>Index</h2>
+
+    <form th:each="c:${children}">
+        Name:<span th:text="${c.name}"></span>
+        <button formaction="/children/show">Show</button>
+        <button formaction="/children/edit">Edit</button>
+        <input type="hidden" name="id" th:value="${c.id}">
+    </form>
+
+    <br>
+
+    <form action="/children/create">
+        <button>Crate new</button>
+    </form>
+    
+    <br><a href="/"><button>Back To Welcome</button></a>
+</html>

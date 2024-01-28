@@ -1,0 +1,17 @@
+<html>
+    <h2>Create</h2>
+
+    <form action="/games/store" method="POST">
+        Name:<input name="name" required>
+        Price:<input name="price" required>
+        Child:
+        <select name="child" required>
+            <div th:each="c:${children}">
+            <option th:value="${c.id}"><span th:text="${c.name}"></span></option>
+            </div>
+        </select>
+        <button>Create</button>
+    </form>
+
+    <br><a href="/games"><button>Back To Home</button></a>
+</html>

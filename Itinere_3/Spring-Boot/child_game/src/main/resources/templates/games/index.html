@@ -1,0 +1,23 @@
+<html>
+    <h2>Index</h2>
+
+    <form th:each="g:${games}">
+        Name:<span th:text="${g.name}"></span>
+        <button formaction="/games/show">Show</button>
+        <button formaction="/games/edit">Edit</button>
+        <button formaction="/games/increasePrice">Increase Price of 20%</button>
+        <input type="hidden" name="id" th:value="${g.id}">
+        <input type="hidden" name="percentage" value="20">
+    </form>
+    <br>
+    <form action="/games/increaseAllPrices">
+        <button>Increase All Prices of 10%</button>
+        <input type="hidden" name="percentage" value="20">
+    </form>
+    <br>
+    <form action="/games/create">
+        <button>Crate new</button>
+    </form>
+    
+    <br><a href="/"><button>Back To Welcome</button></a>
+</html>

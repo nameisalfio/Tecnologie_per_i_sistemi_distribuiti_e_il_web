@@ -1,0 +1,18 @@
+<html>
+    <h2>Edit</h2>
+
+    <form action="/games/update" method="POST">
+        Name:<input name="name" th:value="${g.name}">
+        Price:<input name="price" th:value="${g.price}">
+        Child:
+        <select name="child" required>
+            <div th:each="c:${children}">
+            <option th:value="${c.id}"><span th:text="${c.name}"></span></option>
+            </div>
+        </select>
+        <button>Update</button>
+        <input type="hidden" name="id" th:value="${g.id}">
+    </form>
+
+    <br><a href="/games"><button>Back To Home</button></a>
+</html>

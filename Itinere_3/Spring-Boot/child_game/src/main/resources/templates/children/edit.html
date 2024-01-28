@@ -1,0 +1,12 @@
+<html>
+    <h2>Edit</h2>
+
+    <form action="/children/update" method="POST">
+        Name:<input name="name" th:value="${c.name}">
+        Age:<input name="age" th:value="${c.age}">
+        <button>Update</button>
+        <input type="hidden" name="id" th:value="${c.id}">
+    </form>
+
+    <br><a href="/children"><button>Back To Home</button></a>
+</html>

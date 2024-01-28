@@ -7,7 +7,6 @@
             <button formaction="{{route('employees.show', $e)}}">Show</button>
             <button formaction="{{route('employees.edit', $e)}}">Edit</button>
             <button formaction="{{route('employees.increaseSalary', [$e, 20])}}">Increase Salary of 20%</button>
-
         </form>
         @endforeach
         <br>

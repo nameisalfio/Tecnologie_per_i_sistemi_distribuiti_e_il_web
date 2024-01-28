@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h2>Create</h2>
+
+        <form action="{{ route('tasks.store') }}" method="POST">
+            @csrf
+            Title: <input name="title" required>
+            Description: <input name="description" required>
+            Project: 
+            <select name="project" required>
+                @foreach($projects as $p)
+                <option value="{{$p->id}}">{{$p->title}}</option>
+                @endforeach
+            </select>
+            <button>Create now</button>
+        </form>
+
+        <a href="{{route('tasks.index')}}"><button>Back to home</button></a>
+    </body>
+</html>

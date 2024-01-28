@@ -1,0 +1,15 @@
+<html>
+    <h2>Show</h2>
+
+    ID:<span th:text="${g.id}"></span><br>
+    Name:<span th:text="${g.name}"></span><br>
+    Price:<span th:text="${g.price}"></span><br>
+    Child:<span th:text="${g.child.name}"></span><br><br>
+
+    <form action="/games/destroy" method="POST">
+        <button>Delete</button>
+        <input type="hidden" name="id" th:value="${g.id}">
+    </form>
+    
+    <br><a href="/games"><button>Back To Home</button></a>
+</html>
